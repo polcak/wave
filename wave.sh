@@ -38,7 +38,7 @@ function fix_file() {
 	fix_problem_beginning '\\cite' $1
 	fix_problem_beginning '\\ref' $1
 	# Squeeze (number)\nsqueeze on the previous line
-	fix_problem_end '([0-9]+)' $1
+	fix_problem_end '([0-9]\+)' $1
 
 	# Some of the https://english.stackexchange.com/questions/67089/english-line-breaking-rules
 	fix_problem_end '\ba\b' $1
