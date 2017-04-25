@@ -20,7 +20,7 @@ function fix_problem_beginning {
 	FILE=$2
 
 	# See also https://stackoverflow.com/questions/12129870/how-can-i-remove-a-line-feed-newline-before-a-pattern-using-sed
-	sed -i ":r;$!{N;br};s/\n${FIND}/~${FIND}/g" "$FILE"
+	sed -i ":r;\$!{N;br};s/\n${FIND}/~${FIND}/g" "$FILE"
 	sed -i "s/ ${FIND}/~${FIND}/g" "$FILE"
 }
 
@@ -29,7 +29,7 @@ function fix_problem_end {
 	FILE=$2
 
 	# See also https://stackoverflow.com/questions/12129870/how-can-i-remove-a-line-feed-newline-before-a-pattern-using-sed
-	sed -i ":r;$!{N;br};s/\(${FIND}\)\n/\1~/g" "$FILE"
+	sed -i ":r;\$!{N;br};s/\(${FIND}\)\n/\1~/g" "$FILE"
 	sed -i "s/\(${FIND}\) \b/\1~/g" "$FILE"
 }
 
