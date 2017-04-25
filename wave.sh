@@ -26,11 +26,12 @@ function fix_problem_beginning {
 
 function fix_problem_end {
 	FIND=$1
-	FILE=$2
+	REPLACEMENT=$2
+	FILE=$3
 
 	# See also https://stackoverflow.com/questions/12129870/how-can-i-remove-a-line-feed-newline-before-a-pattern-using-sed
-	sed -i ":r;\$!{N;br};s/\(${FIND}\)\n/\1~/g" "$FILE"
-	sed -i "s/\(${FIND}\) \b/\1~/g" "$FILE"
+	sed -i ":r;\$!{N;br};s/\(${FIND}\)\n/\1${REPLACEMENT}/g" "$FILE"
+	sed -i "s/\(${FIND}\) \b/\1${REPLACEMENT}/g" "$FILE"
 }
 
 function fix_file() {
@@ -38,10 +39,10 @@ function fix_file() {
 	fix_problem_beginning '\\cite' $1
 	fix_problem_beginning '\\ref' $1
 	# Squeeze (number)\nsqueeze on the previous line
-	fix_problem_end '([0-9]\+)' $1
+	fix_problem_end '([0-9]\+)' '~' $1
 
 	# Some of the https://english.stackexchange.com/questions/67089/english-line-breaking-rules
-	fix_problem_end '\ba\b' $1
+	#fix_problem_end '\ba\b' $1
 	#fix_problem_end '\ban\b' $1
 	#fix_problem_end '\bthe\b' $1
 	#fix_problem_end '\bwhich\b' $1
