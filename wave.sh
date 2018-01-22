@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-function fix_problem_beginning {
+function fix_space_before {
 	FIND=$1
 	FILE=$2
 
@@ -24,7 +24,7 @@ function fix_problem_beginning {
 	sed -i "s/ ${FIND}/~${FIND}/g" "$FILE"
 }
 
-function fix_problem_end {
+function fix_space_after {
 	FIND=$1
 	REPLACEMENT=$2
 	FILE=$3
@@ -36,18 +36,18 @@ function fix_problem_end {
 
 function fix_file() {
 	# Fix \cite and \ref
-	fix_problem_beginning '\\cite' $1
-	fix_problem_beginning '\\ref' $1
+	fix_space_before '\\cite' $1
+	fix_space_before '\\ref' $1
 	# Squeeze (number)\nsqueeze on the previous line
-	fix_problem_end '([0-9]\+)' '~' $1
+	fix_space_after '([0-9]\+)' '~' $1
 
 	# Some of the https://english.stackexchange.com/questions/67089/english-line-breaking-rules
-	#fix_problem_end '\ba\b' '\\nolinebreak[3] ' $1
-	#fix_problem_end '\ban\b' '\\nolinebreak[3] ' $1
-	#fix_problem_end '\bthe\b' '\\nolinebreak[3] ' $1
-	#fix_problem_end '\bwhich\b' '\\nolinebreak[3] ' $1
-	#fix_problem_end '\bthat\b' '\\nolinebreak[3] ' $1
-	#fix_problem_end '\bwho\b' '\\nolinebreak[3] ' $1
+	#fix_space_after '\ba\b' '\\nolinebreak[3] ' $1
+	#fix_space_after '\ban\b' '\\nolinebreak[3] ' $1
+	#fix_space_after '\bthe\b' '\\nolinebreak[3] ' $1
+	#fix_space_after '\bwhich\b' '\\nolinebreak[3] ' $1
+	#fix_space_after '\bthat\b' '\\nolinebreak[3] ' $1
+	#fix_space_after '\bwho\b' '\\nolinebreak[3] ' $1
 }
 
 while [ $# -gt 0 ];
