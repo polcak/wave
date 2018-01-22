@@ -40,6 +40,8 @@ function fix_file() {
 	fix_space_before '\\ref' $1
 	# Squeeze (number)\nsqueeze on the previous line
 	fix_space_after '([0-9]\+)' '~' $1
+	# Do not leave (a), (b), (c) ... or (1), (2), (3) on the end of the line
+	fix_space_after '([a-z0-9])' '~' $1
 
 	# Some of the https://english.stackexchange.com/questions/67089/english-line-breaking-rules
 	#fix_space_after '\ba\b' '\\nolinebreak[3] ' $1
