@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # wave.sh: Add ~ character before specific patterns in LaTeX files
-# Copyright (C) 217 Libor Polčák
+# Copyright (C) 2017-2018 Libor Polčák
 # 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
