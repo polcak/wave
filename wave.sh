@@ -44,9 +44,9 @@ function fix_file() {
 	fix_space_after '([a-z0-9])' '~' $1
 
 	# Some of the https://english.stackexchange.com/questions/67089/english-line-breaking-rules
-	#fix_space_after '\ba\b' '\\nolinebreak[3] ' $1
-	#fix_space_after '\ban\b' '\\nolinebreak[3] ' $1
-	#fix_space_after '\bthe\b' '\\nolinebreak[3] ' $1
+	fix_space_after '\ba\b' '~' $1
+	fix_space_after '\ban\b' '~' $1
+	fix_space_after '\bthe\b' '~' $1
 	#fix_space_after '\bwhich\b' '\\nolinebreak[3] ' $1
 	#fix_space_after '\bthat\b' '\\nolinebreak[3] ' $1
 	#fix_space_after '\bwho\b' '\\nolinebreak[3] ' $1
